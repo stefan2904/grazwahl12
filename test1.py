@@ -1,5 +1,10 @@
 import csv 
 
+def graf(i):
+	for i in range(1, int(i)):
+		print('#'),
+	print('#')
+
 sprengel = csv.reader(open("./raw/Graz/GRW2012_Sprengelerg.csv", "r"), delimiter=";")
 
 sprengelNr = -1
@@ -41,14 +46,17 @@ for row in sprengel:
 				maxSprengel = sprengelNr
 
 			if prozent > piratenCHECK:
-				print "Sprengel", sprengelNr, "war um", prozent-piratenCHECK, "groesser"
+				#print "Sprengel", sprengelNr, "war um", prozent-piratenCHECK, "groesser", 
+				print sprengelNr,
+				graf((prozent-piratenCHECK)*10)
 				groesserCount+=1
 			else:
-				print "Sprengel", sprengelNr, "war um", piratenCHECK-prozent, "kleiner"
+				#print "Sprengel", sprengelNr, "war um", piratenCHECK-prozent, "kleiner"
 				kleinerCount+=1
 
 	else:
-		print row
+		#print row
+		print "-"
 
 print ""
 print "Piraten im Schnitt", piratenProzentSum/sprengelCount, "%"
@@ -57,3 +65,5 @@ print "Es waren", groesserCount, "Sprengel groesser als die Summe"
 print "Es waren", kleinerCount, "Sprengel kleiner als die Summe"
 print "Rekord waren", maxProzent, "% in Sprengel", maxSprengel
 print ""	
+
+
